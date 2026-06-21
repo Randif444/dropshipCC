@@ -1,0 +1,132 @@
+<svg width="680" height="680" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+<title>DropshipCC App Icon</title>
+<defs>
+  <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0f1520"/>
+    <stop offset="100%" stop-color="#131c2e"/>
+  </linearGradient>
+  <linearGradient id="coreGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#38c8f0"/>
+    <stop offset="100%" stop-color="#1a8fd1"/>
+  </linearGradient>
+  <linearGradient id="containerFront" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1e2d44"/>
+    <stop offset="100%" stop-color="#152035"/>
+  </linearGradient>
+  <linearGradient id="containerTop" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2a3f5e"/>
+    <stop offset="100%" stop-color="#1e2d44"/>
+  </linearGradient>
+  <linearGradient id="containerSide" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#162030"/>
+    <stop offset="100%" stop-color="#0e1724"/>
+  </linearGradient>
+  <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#1a8fd1"/>
+    <stop offset="100%" stop-color="#38c8f0"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#38c8f0" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#38c8f0" stop-opacity="0"/>
+  </radialGradient>
+  <clipPath id="iconClip">
+    <rect x="90" y="90" width="500" height="500" rx="80"/>
+  </clipPath>
+</defs>
+
+<!-- Background -->
+<rect width="680" height="680" fill="#0b0f18"/>
+<rect x="90" y="90" width="500" height="500" rx="80" fill="url(#bgGrad)"/>
+
+<g clip-path="url(#iconClip)">
+  <!-- Container front face -->
+  <rect x="148" y="390" width="314" height="185" rx="4" fill="url(#containerFront)"/>
+  <!-- Container top face -->
+  <polygon points="148,390 462,390 490,360 176,360" fill="url(#containerTop)"/>
+  <!-- Container right side face -->
+  <polygon points="462,390 490,360 490,545 462,575" fill="url(#containerSide)"/>
+  <!-- Bottom edge -->
+  <rect x="148" y="570" width="314" height="8" rx="2" fill="#0e1724"/>
+
+  <!-- Corrugation lines front -->
+  <line x1="196" y1="392" x2="196" y2="570" stroke="#243550" stroke-width="1.5"/>
+  <line x1="244" y1="392" x2="244" y2="570" stroke="#243550" stroke-width="1.5"/>
+  <line x1="292" y1="392" x2="292" y2="570" stroke="#243550" stroke-width="1.5"/>
+  <line x1="340" y1="392" x2="340" y2="570" stroke="#243550" stroke-width="1.5"/>
+  <line x1="388" y1="392" x2="388" y2="570" stroke="#243550" stroke-width="1.5"/>
+  <line x1="414" y1="392" x2="414" y2="570" stroke="#243550" stroke-width="1.5"/>
+
+  <!-- Corrugation top -->
+  <line x1="190" y1="361" x2="218" y2="389" stroke="#1d2e45" stroke-width="1"/>
+  <line x1="237" y1="361" x2="265" y2="389" stroke="#1d2e45" stroke-width="1"/>
+  <line x1="284" y1="361" x2="312" y2="389" stroke="#1d2e45" stroke-width="1"/>
+  <line x1="331" y1="361" x2="359" y2="389" stroke="#1d2e45" stroke-width="1"/>
+  <line x1="378" y1="361" x2="406" y2="389" stroke="#1d2e45" stroke-width="1"/>
+  <line x1="425" y1="361" x2="453" y2="389" stroke="#1d2e45" stroke-width="1"/>
+
+  <!-- Container edge highlights -->
+  <line x1="148" y1="390" x2="462" y2="390" stroke="#2e4870" stroke-width="1.2"/>
+  <line x1="148" y1="390" x2="176" y2="360" stroke="#2e4870" stroke-width="1.2"/>
+  <line x1="462" y1="390" x2="490" y2="360" stroke="#2e4870" stroke-width="1.2"/>
+  <line x1="176" y1="360" x2="490" y2="360" stroke="#2e4870" stroke-width="1.2"/>
+
+  <!-- Corner accent dots -->
+  <circle cx="148" cy="390" r="3.5" fill="#38c8f0" opacity="0.7"/>
+  <circle cx="462" cy="390" r="3.5" fill="#38c8f0" opacity="0.7"/>
+  <circle cx="176" cy="360" r="3.5" fill="#38c8f0" opacity="0.5"/>
+  <circle cx="490" cy="360" r="3.5" fill="#38c8f0" opacity="0.5"/>
+
+  <!-- Accent stripe -->
+  <rect x="148" y="556" width="314" height="3" rx="1" fill="#1a8fd1" opacity="0.6"/>
+
+  <!-- Glow halo -->
+  <circle cx="319" cy="270" r="110" fill="url(#coreGlow)"/>
+
+  <!-- Radar arcs -->
+  <path d="M 199 270 A 120 120 0 0 1 439 270" fill="none" stroke="#1a8fd1" stroke-width="1.2" stroke-dasharray="6 5" opacity="0.35"/>
+  <path d="M 227 270 A 92 92 0 0 1 411 270" fill="none" stroke="#1a8fd1" stroke-width="1.4" stroke-dasharray="5 4" opacity="0.5"/>
+  <path d="M 256 270 A 63 63 0 0 1 382 270" fill="none" stroke="#38c8f0" stroke-width="1.6" stroke-dasharray="4 3" opacity="0.65"/>
+  <path d="M 284 270 A 35 35 0 0 1 354 270" fill="none" stroke="#38c8f0" stroke-width="1.8" opacity="0.8"/>
+
+  <!-- Baseline -->
+  <line x1="196" y1="270" x2="442" y2="270" stroke="#1e3a5a" stroke-width="1"/>
+
+  <!-- Network lines from core -->
+  <line x1="319" y1="255" x2="319" y2="175" stroke="#1a8fd1" stroke-width="1" opacity="0.5"/>
+  <line x1="319" y1="255" x2="240" y2="210" stroke="#1a8fd1" stroke-width="1" opacity="0.4"/>
+  <line x1="319" y1="255" x2="398" y2="210" stroke="#1a8fd1" stroke-width="1" opacity="0.4"/>
+  <line x1="319" y1="255" x2="210" y2="265" stroke="#1a8fd1" stroke-width="1" opacity="0.3"/>
+  <line x1="319" y1="255" x2="428" y2="265" stroke="#1a8fd1" stroke-width="1" opacity="0.3"/>
+
+  <!-- Network nodes -->
+  <circle cx="319" cy="175" r="4" fill="none" stroke="#38c8f0" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="240" cy="210" r="3.5" fill="none" stroke="#38c8f0" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="398" cy="210" r="3.5" fill="none" stroke="#38c8f0" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="210" cy="265" r="3" fill="none" stroke="#1a8fd1" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="428" cy="265" r="3" fill="none" stroke="#1a8fd1" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="319" cy="175" r="1.5" fill="#38c8f0" opacity="0.8"/>
+  <circle cx="240" cy="210" r="1.5" fill="#38c8f0" opacity="0.7"/>
+  <circle cx="398" cy="210" r="1.5" fill="#38c8f0" opacity="0.7"/>
+
+  <!-- Core rings -->
+  <circle cx="319" cy="270" r="30" fill="none" stroke="#38c8f0" stroke-width="2" opacity="0.5"/>
+  <circle cx="319" cy="270" r="22" fill="#0f1c30" stroke="#38c8f0" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="319" cy="270" r="17" fill="url(#coreGrad)"/>
+
+  <!-- Crosshair -->
+  <line x1="319" y1="258" x2="319" y2="282" stroke="#0a1520" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="307" y1="270" x2="331" y2="270" stroke="#0a1520" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="319" cy="270" r="3" fill="#e8f7ff"/>
+
+  <!-- Upward arrow -->
+  <line x1="319" y1="360" x2="319" y2="320" stroke="#38c8f0" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="319,308 310,328 328,328" fill="#38c8f0" opacity="0.7"/>
+</g>
+
+<!-- Border -->
+<rect x="90" y="90" width="500" height="500" rx="80" fill="none" stroke="#253a5c" stroke-width="1.5"/>
+
+<!-- Wordmark -->
+<text x="340" y="636" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#c8d8ec">DROPSHIP<tspan fill="#38c8f0">CC</tspan></text>
+<text x="340" y="658" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="400" letter-spacing="5" fill="#4a6a9a">COMMAND CENTER</text>
+</svg>
