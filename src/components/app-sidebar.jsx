@@ -1,3 +1,4 @@
+"use client";
 import {
   Search,
   LayoutDashboard,
@@ -19,14 +20,39 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
+const ClientAvatarWithBadge = dynamic(
+  () => import("./avatar-badge").then((mod) => mod.AvatarWithBadge),
+  { ssr: false },
+);
 const items = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/products", label: "Product Intel", icon: Search },
-  { href: "/swipe-files", label: "Swipe Files", icon: Bookmark },
-  { href: "/content-pipeline", label: "Content Pipeline", icon: Kanban },
-  { href: "/analytics", label: "Analytics", icon: BarChart },
-  { href: "/settings", label: "Settings", icon: Settings },
+  {
+    href: "/dashboard",
+    label: "Dashboard",
+    icon: LayoutDashboard,
+    category: "main",
+  },
+  { href: "/products", label: "Product Intel", icon: Search, category: "main" },
+  {
+    href: "/swipe-files",
+    label: "Swipe Files",
+    icon: Bookmark,
+    category: "resources",
+  },
+  {
+    href: "/content-pipeline",
+    label: "Content Pipeline",
+    icon: Kanban,
+    category: "main",
+  },
+  { href: "/analytics", label: "Analytics", icon: BarChart, category: "main" },
+  {
+    href: "/settings",
+    label: "Settings",
+    icon: Settings,
+    category: "settings",
+  },
 ];
 
 export function AppSidebar() {
@@ -53,16 +79,57 @@ export function AppSidebar() {
           <SidebarGroupLabel>Menu Utama</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.label}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.href}>
-                      <item.icon />
-                      <span>{item.label}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {items
+                .filter((i) => i.category === "main")
+                .map((item) => (
+                  <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton asChild>
+                      <a href={item.href}>
+                        <item.icon />
+                        <span>{item.label}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Resources</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items
+                .filter((i) => i.category === "resources")
+                .map((item) => (
+                  <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton asChild>
+                      <a href={item.href}>
+                        <item.icon />
+                        <span>{item.label}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Pengaturan</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items
+                .filter((i) => i.category === "settings")
+                .map((item) => (
+                  <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton asChild>
+                      <a href={item.href}>
+                        <item.icon />
+                        <span>{item.label}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -70,7 +137,7 @@ export function AppSidebar() {
 
       <SidebarFooter className="p-4 border-t">
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+          <ClientAvatarWithBadge />
           <div>
             <p className="font-medium text-black">M Randi Fathurrohman</p>
             <p className="text-xs">faturahmanrandi14@gmail.com</p>

@@ -1,5 +1,5 @@
-import Image from "next/image";
+import Welcome from "@/components/welcome";
 
 export default function Home() {
-  return <div>ini content</div>;
+  return <Welcome />;
 }
