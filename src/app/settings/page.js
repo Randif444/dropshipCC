@@ -1,9 +1,14 @@
+import { SidebarTrigger } from "@/components/ui/sidebar";
+
 export default function SettingsPage() {
   return (
-    <div>
-      <div className="flex gap-4 justify-center">
-        <h1 className="text-2xl font-semibold">Settings</h1>
-        <p className="text-gray-500 mt-1">Coming soon...</p>
+    <div className="flex-1">
+      <div className="flex gap-3 items-center">
+        <SidebarTrigger />
+        <div>
+          <h1>Settings</h1>
+          <p className="text-gray-500 text-xs">Konfigurasi aplikasi</p>
+        </div>
       </div>
     </div>
   );

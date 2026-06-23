@@ -11,15 +11,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body>
-        <TooltipProvider>
-          <SidebarProvider>
-            {pathname !== "/" && <AppSidebar />}
-            <main className="w-full">
-              <SidebarTrigger className="m-2" />
+        <SidebarProvider>
+          {pathname !== "/" && <AppSidebar />}
+          <main className="w-full">
+            <TooltipProvider>
               <div className="p-4">{children}</div>
-            </main>
-          </SidebarProvider>
-        </TooltipProvider>
+            </TooltipProvider>{" "}
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   );

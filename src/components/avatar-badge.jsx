@@ -4,7 +4,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar";
-import dynamic from "next/dynamic";
 
 export function AvatarWithBadge() {
   return (

@@ -1,9 +1,14 @@
+import { SidebarTrigger } from "@/components/ui/sidebar";
+
 export default function ProductsPage() {
   return (
-    <div>
-      <div className="flex gap-4 justify-center">
-        <h1 className="text-2xl font-semibold">Product Intel</h1>
-        <p className="text-gray-500 mt-1">Coming soon...</p>
+    <div className="flex-1">
+      <div className="flex gap-3 items-center">
+        <SidebarTrigger />
+        <div>
+          <h1>Product Intel</h1>
+          <p className="text-gray-500 text-xs">Pusat riset & evaluasi produk</p>
+        </div>
       </div>
     </div>
   );
