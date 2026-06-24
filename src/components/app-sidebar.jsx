@@ -1,4 +1,6 @@
 "use client";
+import { PanelLeft } from "lucide-react";
+
 import {
   Search,
   LayoutDashboard,
@@ -8,6 +10,7 @@ import {
   BarChart,
 } from "lucide-react";
 import {
+  useSidebar,
   Sidebar,
   SidebarHeader,
   SidebarContent,
@@ -18,6 +21,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -58,24 +62,69 @@ const items = [
 ];
 
 export function AppSidebar() {
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
   const pathname = usePathname();
 
   return (
-    <Sidebar>
-      <SidebarHeader className="p-4 border-b">
-        <div className="flex gap-3">
-          <Image
-            src="/dropshipcc_minimal.svg"
-            alt="Logo Dropship Command Center"
-            className="rounded-md object-cover"
-            width={40}
-            height={40}
-          />{" "}
-          <div className="flex-1 items-center gap-2 font-bold text-md">
-            <span>DropshipCC</span>
-            <p className="text-xs font-light">Dropship Command Center</p>
+    <Sidebar collapsible="icon">
+      <SidebarHeader className="border-b p-4">
+        {!isCollapsed ? (
+          <div className="flex items-center gap-3">
+            <Image
+              src="/dropshipcc_minimal.svg"
+              alt="Logo Dropship Command Center"
+              width={40}
+              height={40}
+              className="rounded-md object-cover shrink-0"
+            />
+
+            <div className="flex-1">
+              <span className="font-bold">DropshipCC</span>
+            </div>
+
+            <SidebarTrigger className="shrink-0" />
           </div>
-        </div>
+        ) : (
+          <div className="flex justify-center">
+            <div className="group relative flex h-10 w-10 items-center justify-center">
+              {/* Logo */}
+              <Image
+                src="/dropshipcc_minimal.svg"
+                alt="Logo Dropship Command Center"
+                width={48}
+                height={48}
+                className="
+                  absolute
+
+                  rounded-md
+                  object-cover
+
+                  transition-opacity
+                  duration-150
+
+                  group-hover:opacity-0
+                "
+              />
+
+              {/* Toggle */}
+              <SidebarTrigger
+                className="
+                  absolute
+
+                  opacity-0
+
+                  transition-opacity
+                  duration-150
+
+                  group-hover:opacity-100
+
+                  hover:bg-transparent
+                "
+              />
+            </div>
+          </div>
+        )}
       </SidebarHeader>
 
       <SidebarContent>
