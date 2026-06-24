@@ -4,7 +4,6 @@ import { cards_dummy, actions } from "@/data/datas";
 import QuickAction from "@/components/quick-action";
 import DateHeader from "@/components/date-time-header";
 import GreetingHeader from "@/components/greeting";
-import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Boxes, Upload, FileText, PlusCircle, Kanban } from "lucide-react";
 
 export default function DashboardPage() {
@@ -23,7 +22,6 @@ export default function DashboardPage() {
       <div className="sticky top-0">
         <div className="flex-1 pb-4 border-b">
           <div className="flex gap-3 items-center  ">
-            <SidebarTrigger />
             <div>
               <div className="flex gap-1">
                 <GreetingHeader />
