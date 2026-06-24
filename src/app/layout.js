@@ -1,24 +1,16 @@
-"use client";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
-import { usePathname } from "next/navigation";
+import AppShell from "@/components/app-shell";
+
+export const metadata = {
+  title: "DropshipCC - dropship command center",
+  description: "dropship command center",
+};
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
       <body>
-        <SidebarProvider>
-          {pathname !== "/" && <AppSidebar />}
-          <main className="w-full">
-            <TooltipProvider>
-              <div className="p-4">{children}</div>
-            </TooltipProvider>{" "}
-          </main>
-        </SidebarProvider>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

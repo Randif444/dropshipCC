@@ -1,3 +1,4 @@
+"use client";
 import { Card, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function QuickAction({ icon, title, children }) {

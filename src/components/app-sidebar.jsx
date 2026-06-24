@@ -165,13 +165,19 @@ export function AppSidebar() {
         ))}
       </SidebarContent>
       <SidebarFooter className="p-4 border-t">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <ClientAvatarWithBadge />
-          <div>
-            <p className="font-medium text-black">M Randi Fathurrohman</p>
-            <p className="text-xs">faturahmanrandi14@gmail.com</p>
+        {!isCollapsed ? (
+          <div className="flex items-center gap-2 text-sm text-gray-500">
+            <ClientAvatarWithBadge />
+            <div>
+              <p className="font-medium text-black">M Randi Fathurrohman</p>
+              <p className="text-xs">faturahmanrandi14@gmail.com</p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+            <ClientAvatarWithBadge />
+          </div>
+        )}
       </SidebarFooter>
     </Sidebar>
   );
