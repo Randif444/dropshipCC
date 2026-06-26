@@ -23,17 +23,20 @@ import { Textarea } from "@/components/ui/textarea";
 export default function Modal({ children }) {
   return (
     <Dialog>
-      <form>
-        <DialogTrigger asChild>
-          <div className="cursor-pointer">{children}</div>
-        </DialogTrigger>
-        <DialogContent>
+      <DialogTrigger asChild>
+        <div className="cursor-pointer">{children}</div>
+      </DialogTrigger>
+
+      <DialogContent>
+        <form>
           <DialogHeader>
             <DialogTitle>Create New Product</DialogTitle>
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name-product">Name Product *</Label>
+              <Label htmlFor="name-product" className="mt-4">
+                Name Product *
+              </Label>
               <Input
                 id="name-product"
                 name="name"
@@ -152,8 +155,8 @@ export default function Modal({ children }) {
             </DialogClose>
             <Button type="submit">Save product</Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }
