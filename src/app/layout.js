@@ -1,3 +1,4 @@
+import QueryProvider from "@/components/QueryProvider";
 import "./globals.css";
 import AppShell from "@/components/app-shell";
 
@@ -10,7 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body suppressHydrationWarning>
-        <AppShell>{children}</AppShell>
+        <QueryProvider>
+          <AppShell>{children}</AppShell>
+        </QueryProvider>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+"use client";
+import { useProducts } from "@/hooks/useProducts";
 import { FilterNiche } from "@/components/filter-niche";
 import { FilterStatus } from "@/components/filter-status";
 import Modal from "@/components/modal";
@@ -5,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { ProductTable } from "@/components/product-table";
 import { Searchbar } from "@/components/search-bar";
 export default function ProductsPage() {
+  const { data: products } = useProducts();
+  const productCount = products?.length || 0;
   return (
     <div>
       <div className="fixed pt-4 w-full top-0 bg-sidebar overflow-hidden z-50">
@@ -41,7 +45,7 @@ export default function ProductsPage() {
               <FilterStatus />
               <FilterNiche />
             </div>
-            <p className="p-0 text-xs text-gray-500">6 Product</p>
+            <p className="p-0 text-xs text-gray-500">{productCount} product</p>
           </div>
           <ProductTable />
         </div>

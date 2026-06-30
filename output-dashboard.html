@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dropship Command Center - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/geist-sans.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Geist Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Scrollbar for better internal tool feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d3daea",
+                        "inverse-primary": "#62df7d",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary-fixed-variant": "#8a143c",
+                        "on-secondary-container": "#5c6274",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e7eefe",
+                        "on-surface": "#151c27",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed": "#dce2f7",
+                        "outline-variant": "#bdcaba",
+                        "surface-container-low": "#f0f3ff",
+                        "secondary-container": "#d9dff5",
+                        "on-primary-container": "#f7fff2",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#006b2c",
+                        "on-background": "#151c27",
+                        "on-primary-fixed-variant": "#005320",
+                        "tertiary": "#a72d51",
+                        "surface-tint": "#006e2d",
+                        "surface": "#f9f9ff",
+                        "primary-fixed": "#7ffc97",
+                        "outline": "#6e7b6c",
+                        "primary-container": "#00873a",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-variant": "#dce2f3",
+                        "tertiary-container": "#c74668",
+                        "error-container": "#ffdad6",
+                        "secondary": "#575e70",
+                        "on-primary-fixed": "#002109",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#62df7d",
+                        "surface-container-high": "#e2e8f8",
+                        "on-secondary-fixed": "#141b2b",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffd9de",
+                        "on-tertiary-fixed": "#3f0016",
+                        "on-surface-variant": "#3e4a3d",
+                        "tertiary-fixed-dim": "#ffb2bf",
+                        "inverse-surface": "#2a313d",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "240px",
+                        "input-height": "36px",
+                        "button-height": "36px",
+                        "card-padding-lg": "24px",
+                        "gutter": "16px",
+                        "card-padding-sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-muted": ["Geist"],
+                        "section-label": ["Geist"],
+                        "stat-display": ["Geist"],
+                        "body-base": ["Geist"],
+                        "page-title": ["Geist"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-muted": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "section-label": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "stat-display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-base": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "page-title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- Sidebar / Navigation Drawer -->
+<aside class="w-[240px] h-screen fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col h-full p-gutter" id="sidebar">
+<div class="mb-8 flex items-center justify-between">
+<span class="font-page-title text-page-title font-bold text-primary">DCC</span>
+<button class="md:hidden p-2 text-secondary" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="mb-8 flex flex-col gap-1">
+<div class="w-12 h-12 rounded-full mb-3 overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate administrative user, clean minimalist aesthetic, neutral lighting, against a soft grey studio background. High resolution, high contrast, representing professional management software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDciU8yXX3DAwI-m2DI4hGEsNnb9hsYWJ8ewiKQXVSx6x5vfFs-tVxL_0jin5RObKdcd641szhbScSltEKHQ03mqsCL1dxWdOzH71040m3wXjMSs_l8XgSCcDKZIfxAxYRU2JXwv6xzeUnbO0rtWThL5KEpDqBCaHdOr74zYCkIuVpeG0lt9RbawGNDjzPvIfU_ABAn8oToWwsOLGuYen9tDyvsaemvt_c3jYjS7rtchAj2ausdgpHdIgceuMQFyxsw4eOOAOwZKg"/>
+</div>
+<p class="font-section-label text-section-label">Admin User</p>
+<p class="font-body-muted text-body-muted text-secondary">admin@dcc.com</p>
+<span class="inline-flex items-center gap-1.5 font-label-caps text-label-caps text-primary mt-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                Online
+            </span>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary-container rounded-lg font-semibold active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-base">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-body-base">Product Intel</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">reorder</span>
+<span class="font-body-base">Content Pipeline</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-base">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">folder_special</span>
+<span class="font-body-base">Swipe Files</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-base">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Overlay for mobile sidebar -->
+<div class="fixed inset-0 bg-black/30 z-40 hidden opacity-0 transition-opacity duration-300" id="overlay" onclick="toggleSidebar()"></div>
+<!-- Main Content Area -->
+<main class="ml-0 md:ml-[240px] flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant flex items-center justify-between px-gutter py-4">
+<div class="flex items-center gap-3">
+<button class="md:hidden p-1 text-secondary cursor-pointer active:opacity-80" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-page-title text-page-title font-bold text-primary">Dashboard</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer active:opacity-80">
+<img class="w-full h-full object-cover" data-alt="A small profile thumbnail of an administrator in a high-tech minimalist office, soft blue and green ambient lighting, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpCttyS2QyEvSUWn7ymIvRfH9BGXFhGvznjF1fzxfDeFF5pRAIXvYGr5Yoy-F8aFH5wLwfgZcyskoIsknrfUziiUPxAuH1Cg2LI9CZqPFbH5QqZWzOtOKY-zxxzRPng8gd8YT01F4nOQtk8sU8g-gLXqARMBatPL1ZvLJ3U7XYuE-aIvpCbSGwgNjcji8flbmkqZsBaYm7qSwPzMhY-Cf9DcWLCE3R8nryimwKUjUv67kKyrvmm4yURe0ub2lFDr9gLc_qkW_fwQ"/>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-gutter space-y-8">
+<!-- Greeting & Dynamic Date -->
+<section>
+<h2 class="font-page-title text-page-title text-on-surface">Selamat Pagi, Admin</h2>
+<p class="font-body-base text-secondary">Senin, 20 Mei 2024</p>
+</section>
+<!-- Stat Cards Grid 2x2 -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-white border border-outline-variant p-card-padding-sm rounded-lg flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Total Produk</span>
+<span class="font-stat-display text-stat-display text-on-surface">124</span>
+<div class="mt-2 h-1 w-12 bg-primary/20 rounded-full">
+<div class="h-full w-full bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-card-padding-sm rounded-lg flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Siap Publish</span>
+<span class="font-stat-display text-stat-display text-primary">18</span>
+<div class="mt-2 h-1 w-12 bg-primary/20 rounded-full">
+<div class="h-full w-2/3 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-card-padding-sm rounded-lg flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Swipe Files</span>
+<span class="font-stat-display text-stat-display text-on-surface">45</span>
+<div class="mt-2 h-1 w-12 bg-primary/20 rounded-full">
+<div class="h-full w-1/2 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-card-padding-sm rounded-lg flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Produk Baru</span>
+<span class="font-stat-display text-stat-display text-tertiary">7</span>
+<div class="mt-2 h-1 w-12 bg-tertiary/20 rounded-full">
+<div class="h-full w-1/4 bg-tertiary rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Pintasan (Quick Actions) -->
+<section>
+<h3 class="font-section-label text-section-label mb-4">Pintasan</h3>
+<div class="flex gap-3 overflow-x-auto pb-2 -mx-gutter px-gutter no-scrollbar">
+<button class="shrink-0 flex items-center gap-2 bg-primary text-on-primary px-4 py-button-height rounded-xl font-body-base active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]">hls</span>
+                        Tambah Produk
+                    </button>
+<button class="shrink-0 flex items-center gap-2 bg-white border border-outline-variant text-on-surface px-4 py-button-height rounded-xl font-body-base active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]">folder</span>
+                        Tambah Swipe File
+                    </button>
+<button class="shrink-0 flex items-center gap-2 bg-white border border-outline-variant text-on-surface px-4 py-button-height rounded-xl font-body-base active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+                        Liat Pipeline
+                    </button>
+</div>
+</section>
+<!-- Aktivitas Terbaru -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-section-label text-section-label">Aktivitas Terbaru</h3>
+<button class="text-primary font-label-caps text-label-caps hover:underline">Lihat Semua</button>
+</div>
+<div class="bg-white border border-outline-variant rounded-lg overflow-hidden">
+<div class="divide-y divide-outline-variant">
+<div class="p-4 flex gap-3 items-start hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">add_box</span>
+<div>
+<p class="font-body-base text-on-surface">Produk <span class="font-semibold">Ergonomic Mouse Z1</span> baru ditambahkan</p>
+<p class="font-body-muted text-secondary">2 menit yang lalu</p>
+</div>
+</div>
+<div class="p-4 flex gap-3 items-start hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-tertiary bg-tertiary/10 p-2 rounded-lg">rate_review</span>
+<div>
+<p class="font-body-base text-on-surface">Konten <span class="font-semibold">Kitchen Scale Pro</span> siap di-review</p>
+<p class="font-body-muted text-secondary">45 menit yang lalu</p>
+</div>
+</div>
+<div class="p-4 flex gap-3 items-start hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary bg-secondary/10 p-2 rounded-lg">file_copy</span>
+<div>
+<p class="font-body-base text-on-surface">Swipe file baru diunduh untuk <span class="font-semibold">Summer Trend</span></p>
+<p class="font-body-muted text-secondary">2 jam yang lalu</p>
+</div>
+</div>
+<div class="p-4 flex gap-3 items-start hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">publish</span>
+<div>
+<p class="font-body-base text-on-surface">Produk <span class="font-semibold">Sleep Mask 2.0</span> dipublikasi ke Store</p>
+<p class="font-body-muted text-secondary">3 jam yang lalu</p>
+</div>
+</div>
+<div class="p-4 flex gap-3 items-start hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-error bg-error/10 p-2 rounded-lg">report</span>
+<div>
+<p class="font-body-base text-on-surface">Stok <span class="font-semibold">Wireless Earbuds</span> mulai menipis</p>
+<p class="font-body-muted text-secondary">5 jam yang lalu</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Produk Bulan Ini -->
+<section class="pb-8">
+<h3 class="font-section-label text-section-label mb-4">Top Produk Bulan Ini</h3>
+<div class="space-y-4">
+<!-- Product 1 -->
+<div class="bg-white border border-outline-variant p-4 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-base font-semibold">Portable Blender X</span>
+<span class="font-label-caps text-label-caps text-primary">92% Target</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden mb-2">
+<div class="bg-primary h-full rounded-full w-[92%]"></div>
+</div>
+<div class="flex justify-between font-body-muted text-secondary">
+<span>450 Terjual</span>
+<span>IDR 12.5M</span>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-white border border-outline-variant p-4 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-base font-semibold">Humidifier PureAir</span>
+<span class="font-label-caps text-label-caps text-primary">78% Target</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden mb-2">
+<div class="bg-primary h-full rounded-full w-[78%]"></div>
+</div>
+<div class="flex justify-between font-body-muted text-secondary">
+<span>312 Terjual</span>
+<span>IDR 8.2M</span>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-white border border-outline-variant p-4 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-base font-semibold">Neck Massager Lite</span>
+<span class="font-label-caps text-label-caps text-secondary">64% Target</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden mb-2">
+<div class="bg-secondary h-full rounded-full w-[64%]"></div>
+</div>
+<div class="flex justify-between font-body-muted text-secondary">
+<span>210 Terjual</span>
+<span>IDR 5.9M</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const isOpen = sidebar.classList.contains('translate-x-0');
+
+            if (isOpen) {
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('block');
+                overlay.classList.remove('opacity-100');
+            } else {
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                overlay.classList.add('block');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            }
+        }
+
+        // Auto-close sidebar on mobile if window is resized above tablet breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('overlay');
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('block');
+                overlay.classList.remove('opacity-100');
+            } else {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+            }
+        });
+    </script>
+</body></html>
